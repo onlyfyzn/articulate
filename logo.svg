@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Blue rounded square background -->
+  <rect width="100" height="100" rx="24" fill="#3D7FF5"/>
+  <!-- 6-armed white asterisk (3 rounded rectangles at 0°, 60°, 120°) -->
+  <g transform="translate(50,50)">
+    <rect x="-6.5" y="-27" width="13" height="54" rx="6.5" fill="white"/>
+    <rect x="-6.5" y="-27" width="13" height="54" rx="6.5" fill="white" transform="rotate(60)"/>
+    <rect x="-6.5" y="-27" width="13" height="54" rx="6.5" fill="white" transform="rotate(120)"/>
+  </g>
+</svg>
