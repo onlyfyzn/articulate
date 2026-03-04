@@ -723,17 +723,51 @@
 </style>
 
 <script>
-  function handleWaitlist() {
-    const input = document.getElementById('email-input');
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) {
+  async function handleWaitlist() {
+    const input   = document.getElementById('email-input');
+    const btn     = document.querySelector('.waitlist-btn');
+    const email   = input.value.trim();
+
+    if (!email || !email.includes('@') || !email.includes('.')) {
       input.style.color = '#FF6B6B';
       input.placeholder = 'Please enter a valid email';
       setTimeout(() => { input.style.color = 'white'; input.placeholder = 'your@email.com'; }, 2000);
       return;
     }
-    document.getElementById('waitlist-form').style.display = 'none';
-    document.getElementById('waitlist-success').style.display = 'block';
+
+    // Loading state
+    btn.textContent = 'Joining…';
+    btn.disabled = true;
+    input.disabled = true;
+
+    try {
+      const res  = await fetch('/api/waitlist', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email })
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        const sub = document.querySelector('#waitlist-success .success-sub');
+        if (sub && data.message) sub.textContent = data.message;
+        document.getElementById('waitlist-form').style.display = 'none';
+        document.getElementById('waitlist-success').style.display = 'block';
+      } else {
+        input.style.color = '#FF6B6B';
+        input.value = '';
+        input.placeholder = data.error || 'Something went wrong. Try again.';
+        btn.textContent = 'Join early access →';
+        btn.disabled = false;
+        input.disabled = false;
+        setTimeout(() => { input.style.color = 'white'; input.placeholder = 'your@email.com'; }, 3000);
+      }
+    } catch (err) {
+      input.placeholder = 'Network error — please try again.';
+      btn.textContent = 'Join early access →';
+      btn.disabled = false;
+      input.disabled = false;
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -782,9 +816,10 @@
         <span>✦</span> Coming Soon &nbsp;·&nbsp; Now Taking Early Access
       </div>
       <h1 class="fade-up delay-1">
-        The voice that<br>
-        <em>opens doors</em><br>
-        starts here.
+        They stop listening<br>
+        after the first sentence.<br>
+        <em>Articulate</em> shows you<br>
+        where and why.
       </h1>
       <p class="hero-sub fade-up delay-2">
         Articulate trains you to speak with clarity, confidence, and charisma — whether you're pitching an idea, owning a room, or just showing up fully in conversation.
@@ -892,7 +927,6 @@
       <div class="success-title">You're on the list.</div>
       <div class="success-sub">We'll be in touch. Get ready to level up.</div>
     </div>
-    <p class="waitlist-note">No spam. No fluff. Just your spot in the queue.</p>
   </div>
 </section>
 
