@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Privacy Choices — Articulate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1a1a1a;
+      --text: #e5e5e5;
+      --text-muted: #737373;
+      --accent: #e5e5e5;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-serif: 'Newsreader', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: var(--text);
+      font-weight: 600; font-size: 1rem;
+    }
+
+    .nav-brand img { height: 22px; width: auto; }
+
+    nav a.back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    nav a.back-link:hover { color: var(--text); }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 6rem;
+    }
+
+    .page-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .effective-date {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 1rem; color: #b3b3b3; }
+
+    ul, ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      color: #b3b3b3;
+    }
+
+    li { margin-bottom: 0.4rem; }
+
+    a { color: var(--text); }
+
+    /* Choice cards */
+    .choice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .choice-card h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .choice-card p {
+      font-size: 0.88rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .choice-card .how-to {
+      font-size: 0.82rem;
+      color: #999;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-box a.cta {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-box a.cta:hover { opacity: 0.85; }
+
+    footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    @media (max-width: 640px) {
+      main { padding: 6.5rem 1.25rem 4rem; }
+      h1 { font-size: 1.8rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://usearticulate.app" class="nav-brand">
+    <img src="https://usearticulate.app/logo.svg" alt="Articulate">
+    Articulate
+  </a>
+  <a href="https://usearticulate.app" class="back-link">← Back to home</a>
+</nav>
+
+<main>
+  <span class="page-label">Your Privacy</span>
+  <h1>User Privacy Choices</h1>
+  <p class="effective-date">Effective date: March 27, 2026</p>
+
+  <p>At Articulate, you have control over your personal data. This page outlines the choices available to you regarding the collection, use, and management of your information within the Articulate app.</p>
+
+  <h2>Your Choices</h2>
+
+  <div class="choice-card">
+    <h3>Audio Recording Data</h3>
+    <p>You choose when to record. Articulate only processes audio you explicitly submit for analysis. We never record in the background or access your microphone without your active participation.</p>
+    <div class="how-to">You can delete individual recordings and their associated analysis data at any time from within the app.</div>
+  </div>
+
+  <div class="choice-card">
+    <h3>Push Notifications</h3>
+    <p>You can opt in or out of push notifications at any time, including reminders, progress updates, and new feature announcements.</p>
+    <div class="how-to">Manage in: Settings → Notifications (within the app), or via your device's system notification settings.</div>
+  </div>
+
+  <div class="choice-card">
+    <h3>Analytics &amp; Usage Data</h3>
+    <p>We collect anonymized usage analytics to improve the app experience. You may opt out of non-essential analytics data collection.</p>
+    <div class="how-to">Manage in: Settings → Privacy → Analytics (within the app).</div>
+  </div>
+
+  <div class="choice-card">
+    <h3>Marketing Communications</h3>
+    <p>If you've signed up for our waitlist or newsletter, you can unsubscribe at any time.</p>
+    <div class="how-to">Click the unsubscribe link in any marketing email, or contact us directly.</div>
+  </div>
+
+  <div class="choice-card">
+    <h3>Account &amp; Data Deletion</h3>
+    <p>You may request complete deletion of your account and all associated data at any time. Once processed, this action is permanent and cannot be undone.</p>
+    <div class="how-to">Request via: Settings → Account → Delete Account (within the app), or by emailing us at the address below.</div>
+  </div>
+
+  <h2>Third-Party Services</h2>
+
+  <p>Articulate may integrate with third-party services for analytics, hosting, and infrastructure. These services have their own privacy policies. We only work with providers that maintain appropriate data protection standards.</p>
+
+  <h2>Do Not Track</h2>
+
+  <p>Articulate respects Do Not Track ("DNT") signals sent by your browser. When a DNT signal is detected, we disable non-essential tracking and analytics.</p>
+
+  <h2>California Residents</h2>
+
+  <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, to request its deletion, and to opt out of the sale of personal information. Articulate does not sell personal information.</p>
+
+  <h2>EU/EEA Residents</h2>
+
+  <p>If you are located in the European Union or European Economic Area, you have rights under the General Data Protection Regulation (GDPR), including access, rectification, erasure, data portability, and the right to object to certain processing. To exercise these rights, contact us below.</p>
+
+  <h2>Updates</h2>
+
+  <p>We may update this page as our app and features evolve. Material changes will be communicated through the app or via email.</p>
+
+  <div class="contact-box">
+    <p>Have questions or want to exercise your privacy rights?</p>
+    <a href="mailto:privacy@usearticulate.app" class="cta">Contact privacy@usearticulate.app</a>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Articulate AI LLC</span>
+  <div class="footer-links">
+    <a href="https://usearticulate.app/privacy-policy">Privacy Policy</a>
+    <a href="https://usearticulate.app/privacy-choices">Privacy Choices</a>
+  </div>
+</footer>
+
+</body>
+</html>
