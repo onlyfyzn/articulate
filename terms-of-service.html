@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service — Articulate</title>
+  <script>
+    (function () {
+      const dnt = String(
+        navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || ''
+      ).toLowerCase();
+      if (dnt === '1' || dnt === 'yes') return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3MDG8ZJJNN';
+      document.head.appendChild(script);
+
+      gtag('js', new Date());
+      gtag('config', 'G-3MDG8ZJJNN');
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
