@@ -583,37 +583,20 @@
     font-weight: 300;
   }
 
-  .waitlist-form-wrap { max-width: 480px; margin: 0 auto; }
+  .preorder-wrap { max-width: 520px; margin: 0 auto; }
 
-  .waitlist-form {
-    display: flex;
+  .preorder-panel {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 100px;
-    padding: 6px 6px 6px 24px;
+    border-radius: 32px;
+    padding: 18px;
     backdrop-filter: blur(8px);
-    transition: border-color 0.2s, box-shadow 0.2s;
   }
-
-  .waitlist-form:focus-within {
-    border-color: rgba(255,255,255,0.30);
-    box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
-  }
-
-  .waitlist-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    color: white;
-    min-width: 0;
-  }
-
-  .waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
 
   .waitlist-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: white;
     color: var(--text);
     border: none;
@@ -623,6 +606,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
     white-space: nowrap;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -632,34 +616,12 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.22);
   }
 
-  .waitlist-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.26);
+  .preorder-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.42);
     margin-top: 16px;
     text-align: center;
   }
-
-  .waitlist-success {
-    text-align: center;
-    padding: 32px 0 8px;
-    animation: fadeUp 0.5s forwards;
-  }
-
-  .success-icon {
-    width: 56px; height: 56px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    color: white;
-    margin: 0 auto 20px;
-  }
-
-  .success-title { font-size: 28px; font-weight: 700; color: white; margin-bottom: 8px; letter-spacing: -0.8px; }
-  .success-sub   { font-size: 15px; color: rgba(255,255,255,0.46); }
 
   /* ─── FOOTER ─── */
   footer {
@@ -736,68 +698,10 @@
     footer { padding: 28px 24px; flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
 
-    .waitlist-form { flex-direction: column; border-radius: 20px; padding: 16px; gap: 10px; }
+    .preorder-panel { border-radius: 20px; padding: 16px; }
     .waitlist-btn { width: 100%; text-align: center; }
   }
 </style>
-
-<script>
-  async function handleWaitlist() {
-    const input   = document.getElementById('email-input');
-    const btn     = document.querySelector('.waitlist-btn');
-    const email   = input.value.trim();
-
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      input.style.color = '#FF6B6B';
-      input.placeholder = 'Please enter a valid email';
-      setTimeout(() => { input.style.color = 'white'; input.placeholder = 'your@email.com'; }, 2000);
-      return;
-    }
-
-    // Loading state
-    btn.textContent = 'Joining…';
-    btn.disabled = true;
-    input.disabled = true;
-
-    try {
-      const res  = await fetch('/api/waitlist', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email })
-      });
-      const data = await res.json();
-
-      if (res.ok) {
-        const sub = document.querySelector('#waitlist-success .success-sub');
-        if (sub && data.message) sub.textContent = data.message;
-        document.getElementById('waitlist-form').style.display = 'none';
-        document.getElementById('waitlist-success').style.display = 'block';
-      } else {
-        input.style.color = '#FF6B6B';
-        input.value = '';
-        input.placeholder = data.error || 'Something went wrong. Try again.';
-        btn.textContent = 'Join early access →';
-        btn.disabled = false;
-        input.disabled = false;
-        setTimeout(() => { input.style.color = 'white'; input.placeholder = 'your@email.com'; }, 3000);
-      }
-    } catch (err) {
-      input.placeholder = 'Network error — please try again.';
-      btn.textContent = 'Join early access →';
-      btn.disabled = false;
-      input.disabled = false;
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const emailInput = document.getElementById('email-input');
-    if (emailInput) {
-      emailInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') handleWaitlist();
-      });
-    }
-  });
-</script>
 </head>
 <body>
 
@@ -808,7 +712,7 @@
     Articulate
   </a>
   <ul class="nav-links">
-    <li><a href="#waitlist" class="nav-cta">Join early access</a></li>
+    <li><a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="nav-cta">Pre-order on the App Store</a></li>
   </ul>
 </nav>
 
@@ -832,7 +736,7 @@
     <!-- Left column -->
     <div class="hero-left">
       <div class="hero-badge fade-up">
-        <span>✦</span> Coming Soon &nbsp;·&nbsp; Now Taking Early Access
+        <span>✦</span> Coming Soon &nbsp;·&nbsp; Pre-order Live on the App Store
       </div>
       <h1 class="fade-up delay-1">
         Say less.<br>
@@ -842,7 +746,7 @@
         Articulate listens to how you speak and tells you precisely where you're losing people — so you can fix it before it costs you.
       </p>
       <div class="fade-up delay-3">
-        <a href="#waitlist" class="btn-primary">Join early access →</a>
+        <a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="btn-primary">Pre-order on the App Store →</a>
       </div>
       <div class="hero-social fade-up delay-4">
         <div class="avatar-stack">
@@ -851,7 +755,7 @@
           <div class="av av3">TR</div>
           <div class="av av4">AL</div>
         </div>
-        <span class="hero-social-label">240+ people already on the waitlist</span>
+        <span class="hero-social-label">Reserve your spot now and be ready on day one</span>
       </div>
     </div>
 
@@ -928,22 +832,17 @@
   </div>
 </section>
 
-<!-- WAITLIST -->
-<section class="cta-section" id="waitlist">
-  <div class="section-label">Early access</div>
-  <h2 class="cta-title">Be first in.<br><span class="cta-title-accent">Before everyone else.</span></h2>
-  <p class="cta-sub">We're launching to a limited group first. Drop your email and we'll notify you the moment spots open.</p>
+<!-- PREORDER -->
+<section class="cta-section" id="preorder">
+  <div class="section-label">Pre-order</div>
+  <h2 class="cta-title">Lock it in.<br><span class="cta-title-accent">Before everyone else.</span></h2>
+  <p class="cta-sub">Articulate is live for pre-order on the App Store. Reserve your download now so it lands on your device the moment we launch.</p>
 
-  <div class="waitlist-form-wrap">
-    <div class="waitlist-form" id="waitlist-form">
-      <input type="email" id="email-input" class="waitlist-input" placeholder="your@email.com" />
-      <button class="waitlist-btn" onclick="handleWaitlist()">Join early access →</button>
+  <div class="preorder-wrap">
+    <div class="preorder-panel">
+      <a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="waitlist-btn">Pre-order now →</a>
     </div>
-    <div class="waitlist-success" id="waitlist-success" style="display:none;">
-      <div class="success-icon">✓</div>
-      <div class="success-title">You're on the list.</div>
-      <div class="success-sub">We'll be in touch. Get ready to level up.</div>
-    </div>
+    <div class="preorder-note">Be first through the door when Articulate drops.</div>
   </div>
 </section>
 
@@ -954,7 +853,7 @@
     Articulate
   </div>
   <ul class="footer-links">
-    <li><a href="#waitlist">Join early access</a></li>
+    <li><a href="#preorder">Pre-order</a></li>
     <li><a href="/privacy-policy">Privacy</a></li>
     <li><a href="/terms-of-service">Terms of Service</a></li>
   </ul>
