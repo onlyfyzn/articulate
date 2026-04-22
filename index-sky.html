@@ -147,9 +147,9 @@
     inset: 0;
     background: linear-gradient(
       105deg,
-      rgba(0,0,0,0.14) 0%,
-      rgba(0,0,0,0.06) 40%,
-      transparent 70%
+      rgba(0,0,0,0.30) 0%,
+      rgba(0,0,0,0.18) 42%,
+      rgba(0,0,0,0.04) 76%
     );
     z-index: 1;
     pointer-events: none;
@@ -296,6 +296,8 @@
   .hero-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    max-width: 100%;
     gap: 8px;
     background: rgba(255, 255, 255, 0.20);
     border: 1px solid rgba(255, 255, 255, 0.40);
@@ -306,6 +308,7 @@
     color: white;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-align: center;
     margin-bottom: 32px;
     backdrop-filter: blur(8px);
   }
@@ -317,7 +320,7 @@
     letter-spacing: -2px;
     color: white;
     margin-bottom: 24px;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.18);
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.36);
   }
 
   h1 em {
@@ -335,7 +338,7 @@
     line-height: 1.7;
     max-width: 400px;
     margin-bottom: 40px;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.30);
   }
 
   .btn-primary {
@@ -583,9 +586,9 @@
     font-weight: 300;
   }
 
-  .preorder-wrap { max-width: 520px; margin: 0 auto; }
+  .download-wrap { max-width: 520px; margin: 0 auto; }
 
-  .preorder-panel {
+  .download-panel {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.14);
     border-radius: 32px;
@@ -593,7 +596,7 @@
     backdrop-filter: blur(8px);
   }
 
-  .waitlist-btn {
+  .app-store-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -611,12 +614,12 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .waitlist-btn:hover {
+  .app-store-btn:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0,0,0,0.22);
   }
 
-  .preorder-note {
+  .download-note {
     font-size: 13px;
     color: rgba(255,255,255,0.42);
     margin-top: 16px;
@@ -665,12 +668,13 @@
 
   /* ─── ANIMATIONS ─── */
   .fade-up {
-    opacity: 0;
-    transform: translateY(28px);
-    animation: fadeUp 0.8s forwards;
+    opacity: 1;
+    transform: none;
+    animation: fadeUp 0.8s both;
   }
 
   @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -689,8 +693,26 @@
     }
 
     .hero { height: auto; min-height: 100vh; padding: 100px 24px 60px; }
+    .hero::before {
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.08) 0%,
+        rgba(0,0,0,0.24) 32%,
+        rgba(0,0,0,0.16) 70%,
+        rgba(0,0,0,0.02) 100%
+      );
+    }
     .hero-inner { grid-template-columns: 1fr; text-align: center; margin-top: 0; gap: 48px; }
     .hero-left { align-items: center; }
+    .hero-badge {
+      white-space: normal;
+      flex-wrap: wrap;
+      row-gap: 4px;
+      padding: 8px 14px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+    }
     .hero-sub { margin: 0 auto 40px; }
     .hero-right { display: none; }
 
@@ -698,8 +720,8 @@
     footer { padding: 28px 24px; flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
 
-    .preorder-panel { border-radius: 20px; padding: 16px; }
-    .waitlist-btn { width: 100%; text-align: center; }
+    .download-panel { border-radius: 20px; padding: 16px; }
+    .app-store-btn { width: 100%; text-align: center; }
   }
 </style>
 </head>
@@ -712,7 +734,7 @@
     Articulate
   </a>
   <ul class="nav-links">
-    <li><a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="nav-cta">Pre-order on the App Store</a></li>
+    <li><a href="https://apps.apple.com/us/app/articulate-speak-smarter/id6759934628" class="nav-cta">Download on the App Store</a></li>
   </ul>
 </nav>
 
@@ -736,7 +758,7 @@
     <!-- Left column -->
     <div class="hero-left">
       <div class="hero-badge fade-up">
-        <span>✦</span> Coming Soon &nbsp;·&nbsp; Pre-order Live on the App Store
+        <span>✦</span> Now Live &nbsp;·&nbsp; Available on the App Store
       </div>
       <h1 class="fade-up delay-1">
         Say less.<br>
@@ -746,7 +768,7 @@
         Articulate listens to how you speak and tells you precisely where you're losing people — so you can fix it before it costs you.
       </p>
       <div class="fade-up delay-3">
-        <a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="btn-primary">Pre-order on the App Store →</a>
+        <a href="https://apps.apple.com/us/app/articulate-speak-smarter/id6759934628" class="btn-primary">Download on the App Store →</a>
       </div>
       <div class="hero-social fade-up delay-4">
         <div class="avatar-stack">
@@ -755,7 +777,7 @@
           <div class="av av3">TR</div>
           <div class="av av4">AL</div>
         </div>
-        <span class="hero-social-label">Reserve your spot now and be ready on day one</span>
+        <span class="hero-social-label">Start practicing today with Articulate on iPhone</span>
       </div>
     </div>
 
@@ -832,17 +854,17 @@
   </div>
 </section>
 
-<!-- PREORDER -->
-<section class="cta-section" id="preorder">
-  <div class="section-label">Pre-order</div>
-  <h2 class="cta-title">Lock it in.<br><span class="cta-title-accent">Before everyone else.</span></h2>
-  <p class="cta-sub">Articulate is live for pre-order on the App Store. Reserve your download now so it lands on your device the moment we launch.</p>
+<!-- DOWNLOAD -->
+<section class="cta-section" id="download">
+  <div class="section-label">Download</div>
+  <h2 class="cta-title">Start speaking.<br><span class="cta-title-accent">Sharper today.</span></h2>
+  <p class="cta-sub">Articulate is live on the App Store. Download it now to practice real speaking reps and get instant feedback on clarity, confidence, pacing, and presence.</p>
 
-  <div class="preorder-wrap">
-    <div class="preorder-panel">
-      <a href="https://apps.apple.com/app/apple-store/id6759934628?pt=121765848&ct=Website&mt=8" class="waitlist-btn">Pre-order now →</a>
+  <div class="download-wrap">
+    <div class="download-panel">
+      <a href="https://apps.apple.com/us/app/articulate-speak-smarter/id6759934628" class="app-store-btn">Download now →</a>
     </div>
-    <div class="preorder-note">Be first through the door when Articulate drops.</div>
+    <div class="download-note">Available now for iPhone and iPad.</div>
   </div>
 </section>
 
@@ -853,7 +875,7 @@
     Articulate
   </div>
   <ul class="footer-links">
-    <li><a href="#preorder">Pre-order</a></li>
+    <li><a href="#download">Download</a></li>
     <li><a href="/privacy-policy">Privacy</a></li>
     <li><a href="/terms-of-service">Terms of Service</a></li>
   </ul>
