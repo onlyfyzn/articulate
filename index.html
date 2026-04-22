@@ -366,36 +366,32 @@
     margin-top: 44px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
   }
 
   .hero-social-label {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.68);
-    letter-spacing: 0.02em;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.01em;
     text-shadow: 0 1px 4px rgba(0,0,0,0.12);
   }
 
-  .avatar-stack { display: flex; }
-
-  .avatar-stack .av {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.50);
-    margin-left: -8px;
-    display: flex;
+  .community-pill {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    min-width: 52px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.62);
+    box-shadow: 0 5px 18px rgba(13, 61, 116, 0.18);
+    color: var(--interactive);
+    font-size: 11px;
     font-weight: 700;
-    color: var(--text);
+    letter-spacing: -0.01em;
   }
-
-  .avatar-stack .av:first-child { margin-left: 0; }
-  .av1 { background: #C8E6FA; }
-  .av2 { background: #B8D9F5; }
-  .av3 { background: #D4EAFC; }
-  .av4 { background: #A8D4F5; }
 
   /* ─── PHONE MOCKUP ─── */
   .hero-right {
@@ -489,8 +485,8 @@
   }
 
   .fc1 {
-    top: 92px;
-    left: -104px;
+    top: 286px;
+    left: -116px;
     animation: float 4s ease-in-out infinite 0.5s;
   }
 
@@ -498,8 +494,8 @@
   .fc1::after { left: calc(100% + 30px); }
 
   .fc2 {
-    bottom: 122px;
-    right: -82px;
+    top: 392px;
+    right: -108px;
     animation: float 4s ease-in-out infinite 1s;
   }
 
@@ -759,13 +755,8 @@
         <a href="https://apps.apple.com/us/app/articulate-speak-smarter/id6759934628" class="btn-primary">Download on the App Store →</a>
       </div>
       <div class="hero-social fade-up delay-4">
-        <div class="avatar-stack">
-          <div class="av av1">JM</div>
-          <div class="av av2">KS</div>
-          <div class="av av3">TR</div>
-          <div class="av av4">AL</div>
-        </div>
-        <span class="hero-social-label">Start practicing today with Articulate on iPhone</span>
+        <div class="community-pill">1K+</div>
+        <span class="hero-social-label">Join over 1,000 people leveling up their speech</span>
       </div>
     </div>
 
@@ -777,15 +768,15 @@
         </div>
 
         <div class="float-card fc1">
-          <div class="fc-label">Live challenge</div>
-          <div class="fc-value">Daily reps</div>
-          <div class="fc-sub">Fresh prompts every day</div>
+          <div class="fc-label">Daily challenge</div>
+          <div class="fc-value">Real reps</div>
+          <div class="fc-sub">Practice with fresh prompts</div>
         </div>
 
         <div class="float-card fc2">
-          <div class="fc-label">Available now</div>
-          <div class="fc-value">App Store</div>
-          <div class="fc-sub">Download today</div>
+          <div class="fc-label">Word of the day</div>
+          <div class="fc-value">Build range</div>
+          <div class="fc-sub">Sharpen how you speak</div>
         </div>
       </div>
     </div>
