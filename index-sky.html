@@ -430,6 +430,25 @@
     transform: rotate(2deg);
   }
 
+  .phone::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 106px;
+    z-index: 3;
+    border-radius: 46px 46px 0 0;
+    background: linear-gradient(
+      180deg,
+      #137af5 0%,
+      #188df0 54%,
+      rgba(42, 184, 232, 0.72) 76%,
+      rgba(52, 193, 229, 0) 100%
+    );
+    pointer-events: none;
+  }
+
   .phone-wrap::before {
     content: '';
     position: absolute;
@@ -446,7 +465,6 @@
     display: block;
     width: 100%;
     height: auto;
-    margin-top: -38px;
     border-radius: 36px;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
   }
@@ -696,6 +714,13 @@
       padding: 8px;
       transform: rotate(1deg);
     }
+    .phone::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 88px;
+      border-radius: 36px 36px 0 0;
+    }
     .phone-shot { border-radius: 28px; }
     .phone-wrap::before { inset: 6% -14% 4%; filter: blur(26px); }
     .float-card { display: none; }
@@ -775,8 +800,8 @@
 
         <div class="float-card fc2">
           <div class="fc-label">Word of the day</div>
-          <div class="fc-value">Recalcitrant</div>
-          <div class="fc-sub">Expand your vocabulary</div>
+          <div class="fc-value">Improve your vocab</div>
+          <div class="fc-sub">Learn sharper words daily</div>
         </div>
       </div>
     </div>
